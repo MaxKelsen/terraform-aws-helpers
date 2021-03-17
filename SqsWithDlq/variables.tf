@@ -14,8 +14,3 @@ variable "sqs_queues" {
     kms_data_key_reuse_period_seconds = number
   }))
 }
-
-
-variable "account_id" {}
-
-variable "enable_dlq" {}
