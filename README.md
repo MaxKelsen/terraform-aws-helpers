@@ -32,25 +32,32 @@ A special double-slash syntax is interpreted by Terraform to indicate that the r
   
     module "SqsWithDlq" {
         source  = "MaxKelsen/helpers/aws//SqsWithDlq"
-        version = "1.0.0"
+        version = "1.2.0"
     }
     
 ### Full Example
 
-    module "sst-sqs-queues" {
-      depends_on = [ module.SecretsManager-sqs ]
+    module "project-sqs-queues" {
       source  = "MaxKelsen/helpers/aws//SqsWithDlq"
-      version = "1.0.0"
+      version = "1.2.0"
       providers = {
         aws = aws.sqs
       }
       aws_region = var.aws_region
       environment = var.environment
       account_id = var.aws_account_ids[var.environment]
-      sqs_queues = [
-        "thumb-proc",
-      ]
-      enable_dlq = var.enable_dlq
+      sqs_queues = {
+        project_queue_example = {
+          fifo_queue = false
+          delay_seconds = 0
+          max_message_size = 262144
+          message_retention_seconds = 1209600
+          receive_wait_time_seconds = 0
+          visibility_timeout_seconds = 30
+          kms_master_key_id = "alias/aws/sqs"
+          kms_data_key_reuse_period_seconds = 300
+        }
+      }
     }   
 
 
