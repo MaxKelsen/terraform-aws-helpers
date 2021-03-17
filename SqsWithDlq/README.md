@@ -52,6 +52,38 @@ Example Queue Configurations (Non-FIFO/FIFO):
 If you have a FIFO queue you must have a FIFO Dead Letter Queue.
 And therefore, if you have a standard queue, the dead letter queue must be standard (ie Non-FIFO)
 
+## Requirements
+
+No requirements.
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| aws | n/a |
+
+## Modules
+
+No Modules.
+
+## Resources
+
+| Name |
+|------|
+| [aws_sqs_queue](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sqs_queue) |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| aws\_region | AWS Region to deploy into | `string` | n/a | yes |
+| environment | Compute environment to deploy into | `string` | n/a | yes |
+| sqs\_queues | Map containing specifications for queues to be deployed | <pre>map(object({<br>    fifo_queue = bool<br>    max_message_size = number<br>    delay_seconds = number<br>    message_retention_seconds = number<br>    visibility_timeout_seconds = number<br>    receive_wait_time_seconds = number<br>    visibility_timeout_seconds = number<br>    kms_master_key_id = string<br>    kms_data_key_reuse_period_seconds = number<br>  }))</pre> | n/a | yes |
+
+## Outputs
+
+No output.
+
 # Handy but very long Defaults
 
 + delay_seconds = 0
