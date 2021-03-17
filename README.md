@@ -6,7 +6,7 @@ Copy and paste into your Terraform configuration, insert the variables, and run 
 
     module "helpers" {
       source  = "MaxKelsen/helpers/aws"
-      version = "1.3.0"
+      version = "1.4.0"
     }
 
 The purpose of this repository is to maximize code re-use by placing commonly used aws helper modules in one registry module.
@@ -32,14 +32,14 @@ A special double-slash syntax is interpreted by Terraform to indicate that the r
   
     module "SqsWithDlq" {
         source  = "MaxKelsen/helpers/aws//SqsWithDlq"
-        version = "1.3.0"
+        version = "1.4.0"
     }
     
 ### Full Example
 
     module "project-sqs-queues" {
       source  = "MaxKelsen/helpers/aws//SqsWithDlq"
-      version = "1.3.0"
+      version = "1.4.0"
       providers = {
         aws = aws.sqs
       }
