@@ -27,7 +27,6 @@ resource "aws_sqs_queue" "queue" {
   message_retention_seconds = each.value["max_message_size"]
   receive_wait_time_seconds = each.value["receive_wait_time_seconds"]
   redrive_policy = jsonencode({
-    #deadLetterTargetArn = element(concat(aws_sqs_queue.queue_deadletter.*.arn, list("")), index(var.sqs_queues, each.key) + 1)
     deadLetterTargetArn = aws_sqs_queue.queue_deadletter[each.key].arn
     maxReceiveCount = 5
   })

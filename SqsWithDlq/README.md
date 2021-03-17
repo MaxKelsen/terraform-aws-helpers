@@ -2,7 +2,7 @@
 
     module "project-sqs-queues" {
       source  = "MaxKelsen/helpers/aws//SqsWithDlq"
-      version = "1.4.0"
+      version = "1.5.2"
       providers = {
         aws = aws.sqs
       }
