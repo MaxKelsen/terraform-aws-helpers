@@ -1,7 +1,7 @@
 resource "aws_sqs_queue" "queue_deadletter" {
   for_each = var.sqs_queues
   name = format("%s-dlq-%s-%s", each.key, var.aws_region, var.environment)
-  fifo_queue = each.value["fifo"]
+  fifo_queue = each.value["fifo_queue"]
   delay_seconds = each.value["delay_seconds"]
   max_message_size = each.value["max_message_size"]
   message_retention_seconds = each.value["max_message_size"]
@@ -21,7 +21,7 @@ resource "aws_sqs_queue" "queue" {
     aws_sqs_queue.queue_deadletter]
   for_each = var.sqs_queues
   name = format("%s-%s-%s", each.key, var.aws_region, var.environment)
-  fifo_queue = each.value["fifo"]
+  fifo_queue = each.value["fifo_queue"]
   delay_seconds = each.value["delay_seconds"]
   max_message_size = each.value["max_message_size"]
   message_retention_seconds = each.value["max_message_size"]
