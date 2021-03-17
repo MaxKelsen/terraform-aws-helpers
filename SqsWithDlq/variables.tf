@@ -1,8 +1,15 @@
-variable "environment" {}
+variable "environment" {
+  description = "Compute environment to deploy into"
+  type = string
+}
 
-variable "aws_region" {}
+variable "aws_region" {
+  description = "AWS Region to deploy into"
+  type = string
+}
 
 variable "sqs_queues" {
+  description = "Map containing specifications for queues to be deployed"
   type = map(object({
     fifo_queue = bool
     max_message_size = number
