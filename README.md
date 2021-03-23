@@ -23,6 +23,9 @@ To make pipelines work right, terraform needs to grab credentials for execution 
 ## SQS with DLQ
 This module creates sqs queues with dead letter queues
 
+## Aws Certificate
+Sign a real cert with dns validation for an ALB
+
 ### Modules in Package Sub-directories
 When the source of a module is a version control repository or archive file (generically, a "package"), the module itself may be in a sub-directory relative to the root of the package.
 
