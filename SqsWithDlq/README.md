@@ -52,6 +52,7 @@ Example Queue Configurations (Non-FIFO/FIFO):
 If you have a FIFO queue you must have a FIFO Dead Letter Queue.
 And therefore, if you have a standard queue, the dead letter queue must be standard (ie Non-FIFO)
 
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
 No requirements.
@@ -60,29 +61,31 @@ No requirements.
 
 | Name | Version |
 |------|---------|
-| aws | n/a |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
 
 ## Modules
 
-No Modules.
+No modules.
 
 ## Resources
 
-| Name |
-|------|
-| [aws_sqs_queue](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sqs_queue) |
+| Name | Type |
+|------|------|
+| [aws_sqs_queue.queue](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sqs_queue) | resource |
+| [aws_sqs_queue.queue_deadletter](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sqs_queue) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| aws\_region | AWS Region to deploy into | `string` | n/a | yes |
-| environment | Compute environment to deploy into | `string` | n/a | yes |
-| sqs\_queues | Map containing specifications for queues to be deployed | <pre>map(object({<br>    fifo_queue = bool<br>    max_message_size = number<br>    delay_seconds = number<br>    message_retention_seconds = number<br>    visibility_timeout_seconds = number<br>    receive_wait_time_seconds = number<br>    visibility_timeout_seconds = number<br>    kms_master_key_id = string<br>    kms_data_key_reuse_period_seconds = number<br>  }))</pre> | n/a | yes |
+| <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | AWS Region to deploy into | `string` | n/a | yes |
+| <a name="input_environment"></a> [environment](#input\_environment) | Compute environment to deploy into | `string` | n/a | yes |
+| <a name="input_sqs_queues"></a> [sqs\_queues](#input\_sqs\_queues) | Map containing specifications for queues to be deployed | <pre>map(object({<br>    fifo_queue                        = bool<br>    max_message_size                  = number<br>    delay_seconds                     = number<br>    message_retention_seconds         = number<br>    visibility_timeout_seconds        = number<br>    receive_wait_time_seconds         = number<br>    visibility_timeout_seconds        = number<br>    kms_master_key_id                 = string<br>    kms_data_key_reuse_period_seconds = number<br>  }))</pre> | n/a | yes |
 
 ## Outputs
 
-No output.
+No outputs.
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 # Handy but very long Defaults
 

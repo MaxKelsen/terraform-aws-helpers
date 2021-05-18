@@ -62,4 +62,19 @@ A special double-slash syntax is interpreted by Terraform to indicate that the r
       }
     }   
 
+## Local Development
+It is recommended to set up Terraform [pre-commit hooks](https://github.com/antonbabenko/pre-commit-terraform) in order
+to ensure code is clean and conforms to standards.
 
+The following is a summary of the steps that are necessary (MacOS only).
+
+1. Install dependencies
+
+        brew install pre-commit gawk terraform-docs tflint tfsec coreutils checkov terrascan
+
+2. Install the pre-commit hook globally
+
+        DIR=~/.git-template
+        git config --global init.templateDir ${DIR}
+        pre-commit init-templatedir -t pre-commit ${DIR}
+        pre-commit install
