@@ -4,7 +4,7 @@ resource "aws_sqs_queue" "queue_deadletter" {
   fifo_queue                        = each.value["fifo_queue"]
   delay_seconds                     = each.value["delay_seconds"]
   max_message_size                  = each.value["max_message_size"]
-  message_retention_seconds         = each.value["max_message_size"]
+  message_retention_seconds         = each.value["message_retention_seconds"]
   policy                            = ""
   receive_wait_time_seconds         = each.value["receive_wait_time_seconds"]
   visibility_timeout_seconds        = each.value["visibility_timeout_seconds"]
@@ -23,7 +23,7 @@ resource "aws_sqs_queue" "queue" {
   fifo_queue                = each.value["fifo_queue"]
   delay_seconds             = each.value["delay_seconds"]
   max_message_size          = each.value["max_message_size"]
-  message_retention_seconds = each.value["max_message_size"]
+  message_retention_seconds = each.value["message_retention_seconds"]
   receive_wait_time_seconds = each.value["receive_wait_time_seconds"]
   redrive_policy = jsonencode({
     deadLetterTargetArn = aws_sqs_queue.queue_deadletter[each.key].arn
